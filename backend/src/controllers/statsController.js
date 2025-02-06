@@ -82,17 +82,17 @@ const getCombinedData = async (req, res) => {
 
 module.exports = {
     getStatistics: async (req, res) => {
-        const { month } = req.body;
+        const { month } = req.params;
         const data = await getStatisticsData(month);
         res.status(200).json(data);
     },
     getBarChartData: async (req, res) => {
-        const { month } = req.body;
+        const { month } = req.params;
         const data = await getBarChartData(month);
         res.status(200).json(data);
     },
     getPieChartData: async (req, res) => {
-        const { month } = req.body;
+        const { month } = req.params;
         const data = await getPieChartData(month);
         res.status(200).json(data);
     },
