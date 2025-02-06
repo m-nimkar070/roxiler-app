@@ -4,17 +4,20 @@ const apiRoutes = require("./routes/api");
 
 const app = express();
 
-// Enable CORS for all origins
-app.use(
-  cors({
-    origin: "*",
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
-    allowedHeaders: "Content-Type, Authorization",
-  })
-);
+// ✅ Allow CORS for all origins (Render sometimes ignores middleware)
+app.use(cors());
+// ✅ Manually add CORS headers in every response
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
-// Allow preflight requests for all routes
-app.options("*", cors());
+// ✅ Handle preflight requests
+app.options("*", (req, res) => {
+  res.sendStatus(200);
+});
 
 // Middleware
 app.use(express.json());
