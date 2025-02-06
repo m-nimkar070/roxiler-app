@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchTransactions = createAsyncThunk(
     'transactions/fetchTransactions',
     async (month) => {
-        const response = await axios.get(`https://roxiler-app-6htl.onrender.com/api/transactions?month=${month}`);
+        const response = await axios.get(`https://roxiler-app-6htl.onrender.com/api/transactions`);
         return response.data;
     }
 );
@@ -14,7 +14,7 @@ export const fetchTransactions = createAsyncThunk(
 export const fetchBarChartData = createAsyncThunk(
     'transactions/fetchBarChartData',
     async (month) => {
-        const response = await axios.get(`https://roxiler-app-6htl.onrender.com/api/bar-chart?month=${month}`);
+        const response = await axios.get(`https://roxiler-app-6htl.onrender.com/api/bar-chart`);
         return response.data;
     }
 );
