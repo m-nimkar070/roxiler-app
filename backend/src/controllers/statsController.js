@@ -60,7 +60,7 @@ const getPieChartData = async (month) => {
 };
 
 const getCombinedData = async (req, res) => {
-    const { month } = req.body;
+    const { month } = req.params;
 
     try {
         const [statistics, barChartData, pieChartData] = await Promise.all([
