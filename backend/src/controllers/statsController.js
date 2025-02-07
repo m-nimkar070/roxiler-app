@@ -92,12 +92,10 @@ module.exports = {
     const { month } = req.params;
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Invalid month parameter. Month must be a number between 1 and 12.",
-        });
+      return res.status(400).json({
+        error:
+          "Invalid month parameter. Month must be a number between 1 and 12.",
+      });
     }
     const data = await getStatisticsData(month);
     res.status(200).json(data);
@@ -106,13 +104,27 @@ module.exports = {
     const { month } = req.params;
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
-        return res.status(400).json({ error: "Invalid month parameter. Month must be a number between 1 and 12." });
+      return res
+        .status(400)
+        .json({
+          error:
+            "Invalid month parameter. Month must be a number between 1 and 12.",
+        });
     }
     const data = await getBarChartData(month);
     res.status(200).json(data);
   },
   getPieChartData: async (req, res) => {
     const { month } = req.params;
+    // ✅ Validate the month parameter
+    if (!month || isNaN(month) || month < 1 || month > 12) {
+      return res
+        .status(400)
+        .json({
+          error:
+            "Invalid month parameter. Month must be a number between 1 and 12.",
+        });
+    }
     const data = await getPieChartData(month);
     res.status(200).json(data);
   },
