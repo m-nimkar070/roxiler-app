@@ -14,6 +14,7 @@ const initializeDatabase = async (req, res) => {
 const listTransactions = async (req, res) => {
     const { month, search, page = 1, perPage = 10 } = req.params;
 
+    console.log("month from BE" , month , typeof(month) , isNaN(month));
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
         return res.status(400).json({ error: "Invalid month parameter. Month must be a number between 1 and 12." });
