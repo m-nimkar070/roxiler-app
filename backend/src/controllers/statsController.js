@@ -67,7 +67,7 @@ const getPieChartData = async (month) => {
 };
 
 const getCombinedData = async (req, res) => {
-  const { month } = req.params;
+  const { month } = req.query;
 
   try {
     const [statistics, barChartData, pieChartData] = await Promise.all([
@@ -89,7 +89,7 @@ const getCombinedData = async (req, res) => {
 
 module.exports = {
   getStatistics: async (req, res) => {
-    const { month } = req.params;
+    const { month } = req.query;
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
       return res.status(400).json({
@@ -101,7 +101,7 @@ module.exports = {
     res.status(200).json(data);
   },
   getBarChartData: async (req, res) => {
-    const { month } = req.params;
+    const { month } = req.query;
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
       return res
@@ -115,7 +115,7 @@ module.exports = {
     res.status(200).json(data);
   },
   getPieChartData: async (req, res) => {
-    const { month } = req.params;
+    const { month } = req.query;
     // ✅ Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
       return res
