@@ -20,8 +20,8 @@ const StatsTable = ({month}) => {
   return (
     <div>
       <h1>Stats Data Table</h1>
-      <div>
-        <div>
+      <div className='flex '>
+        <div >
             <p><span>Total Transacrion Amount:</span> {statsData.totalSaleAmount} </p>
         </div>
         <div>

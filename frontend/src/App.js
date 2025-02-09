@@ -12,7 +12,7 @@ function App() {
     }
     return (
         <div className="App">
-            <h1>MERN Stack Challenge</h1>
+            <h1>Dashboard</h1>
             <label>
                 Select Month:
                 <select value={month} onChange={handleMonthChange}>
