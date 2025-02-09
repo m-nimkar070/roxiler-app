@@ -6,18 +6,13 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarChart = () => {
+const BarChart = ({month}) => {
     const dispatch = useDispatch();
     const { barChartData, status, error } = useSelector((state) => state.transactions);
-    const [month, setMonth] = React.useState(3); // Default to March
 
     useEffect(() => {
         dispatch(fetchBarChartData(month));
     }, [month, dispatch]);
-
-    const handleMonthChange = (e) => {
-        setMonth(parseInt(e.target.value));
-    };
 
     if (status === 'loading') return <div>Loading...</div>;
     if (status === 'failed') return <div>Error: {error}</div>;
@@ -46,16 +41,6 @@ const BarChart = () => {
     return (
         <div>
             <h2>Transactions Bar Chart</h2>
-            <label>
-                Select Month:
-                <select value={month} onChange={handleMonthChange}>
-                    {Array.from({ length: 12 }, (_, i) => (
-                        <option key={i + 1} value={i + 1}>
-                            {new Date(0, i).toLocaleString('default', { month: 'long' })}
-                        </option>
-                    ))}
-                </select>
-            </label>
             <Bar data={data} options={options} />
         </div>
     );

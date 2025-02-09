@@ -76,7 +76,6 @@ const getCombinedData = async (req, res) => {
       getPieChartData(month),
     ]);
 
-    console.log("stat", statistics, "bar", barChartData, "pie", pieChartData);
     res.status(200).json({
       statistics,
       barChartData,
@@ -116,7 +115,7 @@ module.exports = {
   },
   getPieChartData: async (req, res) => {
     const { month } = req.query;
-    // ✅ Validate the month parameter
+    // Validate the month parameter
     if (!month || isNaN(month) || month < 1 || month > 12) {
       return res
         .status(400)
