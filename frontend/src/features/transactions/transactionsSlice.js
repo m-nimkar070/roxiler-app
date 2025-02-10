@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk to fetch transactions
+// For fetching transactions Data
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (month) => {
@@ -12,7 +12,7 @@ export const fetchTransactions = createAsyncThunk(
   }
 );
 
-// Async thunk to fetch bar chart data
+// For fetching bar chart data
 export const fetchBarChartData = createAsyncThunk(
   "transactions/fetchBarChartData",
   async (month) => {
@@ -23,6 +23,7 @@ export const fetchBarChartData = createAsyncThunk(
   }
 );
 
+// For fetching Statistics Data
 export const fetchStatsData = createAsyncThunk(
   "transactions/fetchStatsData",
   async (month) => {
